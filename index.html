@@ -3,180 +3,97 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>3-Phase Inverter — 360° Studio Capture</title>
+<title>LVS 2026 — Product Captures</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --ink:#16130f;
-    --ink-2:#1f1b16;
-    --paper:#f1eae0;
-    --paper-2:#e7ddcd;
-    --red:#d8412f;
-    --red-deep:#b22f20;
-    --steel:#9a948a;
-    --line:rgba(241,234,224,.14);
-    --shadow:0 30px 80px -30px rgba(0,0,0,.75);
+    --ink:#16130f;--ink-2:#1f1b16;--paper:#f1eae0;--paper-2:#e7ddcd;
+    --red:#d8412f;--red-deep:#b22f20;--steel:#9a948a;
+    --line:rgba(241,234,224,.14);--shadow:0 30px 80px -30px rgba(0,0,0,.75);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--ink);
-    color:var(--paper);
-    font-family:"IBM Plex Mono",monospace;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-    position:relative;
-  }
-  /* film grain + vignette */
-  body::before{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(120% 90% at 50% -10%, rgba(216,65,47,.10), transparent 55%),
-      radial-gradient(100% 100% at 50% 120%, rgba(0,0,0,.6), transparent 60%);
-  }
-  body::after{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
+  body{background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% -10%, rgba(216,65,47,.10), transparent 55%),radial-gradient(100% 100% at 50% 120%, rgba(0,0,0,.6), transparent 60%)}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
 
-  /* ---- top bar ---- */
-  header{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:26px 0;border-bottom:1px solid var(--line);
-    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-  }
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
   .brand{display:flex;align-items:center;gap:11px;font-weight:600}
   .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(216,65,47,.18)}
   header .meta{color:var(--steel)}
 
-  /* ---- hero ---- */
   .hero{padding:78px 0 54px;border-bottom:1px solid var(--line)}
-  .kicker{
-    font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--red);
-    display:flex;align-items:center;gap:14px;margin-bottom:26px;
-  }
+  .kicker{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:14px;margin-bottom:26px}
   .kicker::before{content:"";width:46px;height:1px;background:var(--red)}
-  .hero h1{
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
-    font-size:clamp(2.7rem,8.5vw,7rem);line-height:.92;letter-spacing:-.02em;
-    text-transform:uppercase;
-  }
+  .hero h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(2.7rem,8.5vw,7rem);line-height:.92;letter-spacing:-.02em;text-transform:uppercase}
   .hero h1 em{font-style:normal;color:var(--red);display:block}
-  .hero .lede{
-    margin-top:30px;max-width:560px;color:var(--steel);
-    font-size:14px;line-height:1.85;
-  }
+  .hero .lede{margin-top:30px;max-width:580px;color:var(--steel);font-size:14px;line-height:1.85}
 
-  /* ---- specimen ---- */
-  .specimen{
-    display:grid;grid-template-columns:90px 1fr;gap:0 34px;
-    padding:64px 0;border-bottom:1px solid var(--line);
-  }
-  .specimen .idx{
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
-    font-size:13px;color:var(--red);letter-spacing:.1em;padding-top:6px;
-  }
+  .product{padding-top:18px}
+  .product-band{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;padding:72px 0 6px;border-top:2px solid var(--red);margin-top:30px}
+  .product-band .pno{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:13px;letter-spacing:.18em;color:var(--red);text-transform:uppercase}
+  .product-band h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,5.2vw,3.4rem);line-height:.95;letter-spacing:-.015em}
+  .product-band .pmeta{color:var(--steel);font-size:12px;letter-spacing:.06em;margin-left:auto;align-self:flex-end}
+
+  .specimen{display:grid;grid-template-columns:90px 1fr;gap:0 34px;padding:54px 0;border-bottom:1px solid var(--line)}
+  .specimen .idx{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:13px;color:var(--red);letter-spacing:.1em;padding-top:6px}
   .specimen .head{margin-bottom:30px}
-  .specimen h2{
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
-    font-size:clamp(1.4rem,3.4vw,2.2rem);letter-spacing:-.01em;line-height:1.05;
-  }
+  .specimen h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(1.4rem,3.4vw,2.2rem);letter-spacing:-.01em;line-height:1.05}
   .specimen .sub{margin-top:12px;color:var(--steel);font-size:13px;line-height:1.7;max-width:46ch}
   .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .tag{
-    font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);
-    border:1px solid var(--line);padding:5px 10px;border-radius:2px;background:rgba(241,234,224,.03);
-  }
+  .tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);border:1px solid var(--line);padding:5px 10px;border-radius:2px;background:rgba(241,234,224,.03)}
 
-  .frame{
-    position:relative;border-radius:4px;overflow:hidden;
-    background:var(--paper);box-shadow:var(--shadow);
-    border:1px solid rgba(0,0,0,.25);
-  }
-  .frame::after{ /* corner registration mark */
-    content:"";position:absolute;top:12px;right:12px;width:16px;height:16px;
-    border-top:1.5px solid var(--red);border-right:1.5px solid var(--red);opacity:.8;
-  }
+  .frame{position:relative;border-radius:4px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.25)}
+  .frame::after{content:"";position:absolute;top:12px;right:12px;width:16px;height:16px;border-top:1.5px solid var(--red);border-right:1.5px solid var(--red);opacity:.8}
   .frame img,.frame video{display:block;width:100%;height:auto}
   .frame.field img{aspect-ratio:4/3;object-fit:cover}
-  .caption{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:13px 16px;background:var(--paper-2);color:#3a322a;
-    font-size:11px;letter-spacing:.06em;border-top:1px solid rgba(0,0,0,.08);
-  }
+  .frame.tall img{max-height:80vh;width:auto;margin:0 auto;background:#fff}
+  .caption{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--paper-2);color:#3a322a;font-size:11px;letter-spacing:.06em;border-top:1px solid rgba(0,0,0,.08)}
   .caption b{font-weight:600;text-transform:uppercase;letter-spacing:.12em}
   .swatch{display:inline-flex;align-items:center;gap:8px}
   .swatch i{width:13px;height:13px;border-radius:50%;background:var(--red);display:inline-block;border:1px solid rgba(0,0,0,.2)}
 
-  /* ---- video block ---- */
-  .video-stage{position:relative;background:#fff}
+  .video-stage{position:relative;background:#fff;display:flex;justify-content:center}
   .video-stage video{width:100%;display:block}
-  .spin-badge{
-    position:absolute;top:14px;left:14px;z-index:2;
-    display:flex;align-items:center;gap:9px;
-    background:rgba(22,19,15,.78);backdrop-filter:blur(6px);
-    color:var(--paper);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    padding:7px 12px;border-radius:100px;border:1px solid rgba(241,234,224,.16);
-  }
+  .spin-badge{position:absolute;top:14px;left:14px;z-index:2;display:flex;align-items:center;gap:9px;background:rgba(22,19,15,.78);backdrop-filter:blur(6px);color:var(--paper);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;border-radius:100px;border:1px solid rgba(241,234,224,.16)}
   .spin-badge .live{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.6s infinite}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
 
-  .actionbar{
-    margin-top:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
-  }
+  .actionbar{margin-top:22px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
   .filemeta{color:var(--steel);font-size:12px;letter-spacing:.04em}
   .filemeta b{color:var(--paper)}
-  .download{
-    --c:var(--paper);
-    display:inline-flex;align-items:center;gap:14px;
-    font-family:"IBM Plex Mono",monospace;font-weight:600;
-    font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink);background:var(--red);text-decoration:none;
-    padding:16px 26px;border-radius:3px;position:relative;overflow:hidden;
-    transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;
-    box-shadow:0 10px 30px -10px rgba(216,65,47,.7);
-  }
+  .download{display:inline-flex;align-items:center;gap:14px;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--red);text-decoration:none;padding:16px 26px;border-radius:3px;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;box-shadow:0 10px 30px -10px rgba(216,65,47,.7)}
   .download svg{width:18px;height:18px;transition:transform .3s}
-  .download::before{
-    content:"";position:absolute;inset:0;background:var(--paper);
-    transform:translateY(101%);transition:transform .3s cubic-bezier(.2,.8,.2,1);z-index:0;
-  }
+  .download::before{content:"";position:absolute;inset:0;background:var(--paper);transform:translateY(101%);transition:transform .3s cubic-bezier(.2,.8,.2,1);z-index:0}
   .download span,.download svg{position:relative;z-index:1}
   .download:hover{transform:translateY(-3px);box-shadow:0 18px 40px -12px rgba(216,65,47,.85)}
   .download:hover::before{transform:translateY(0)}
   .download:hover svg{transform:translateY(3px)}
   .download:active{transform:translateY(-1px)}
 
-  footer{padding:48px 0 70px;color:var(--steel);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer{padding:54px 0 70px;color:var(--steel);font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line)}
   footer .red{color:var(--red)}
 
-  /* ---- load reveal ---- */
   [data-rise]{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
   @keyframes rise{to{opacity:1;transform:none}}
 
-  /* ---- password gate ---- */
-  #gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(120% 100% at 50% 0%,rgba(216,65,47,.10),transparent 55%),var(--ink);
-    transition:opacity .6s ease,visibility .6s}
+  /* password gate */
+  #gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 100% at 50% 0%,rgba(216,65,47,.10),transparent 55%),var(--ink);transition:opacity .6s ease,visibility .6s}
   #gate.unlocked{opacity:0;visibility:hidden;pointer-events:none}
   .gate-card{width:min(430px,90vw);text-align:center;padding:0 24px}
   .gate-card .dot{width:13px;height:13px;border-radius:50%;background:var(--red);margin:0 auto 26px;box-shadow:0 0 0 5px rgba(216,65,47,.18)}
   .gate-card .gk{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
-  .gate-card h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;text-transform:uppercase;
-    font-size:clamp(1.9rem,5vw,2.7rem);line-height:1;letter-spacing:-.01em;margin-bottom:10px}
+  .gate-card h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(1.9rem,5vw,2.7rem);line-height:1;letter-spacing:-.01em;margin-bottom:10px}
   .gate-card p{color:var(--steel);font-size:12px;letter-spacing:.04em;margin-bottom:30px}
   .gate-form{display:flex;gap:10px}
-  .gate-form input{flex:1;background:rgba(241,234,224,.04);border:1px solid var(--line);color:var(--paper);
-    font-family:"IBM Plex Mono",monospace;font-size:15px;letter-spacing:.3em;text-align:center;
-    padding:15px 16px;border-radius:3px;outline:none;transition:border-color .2s}
+  .gate-form input{flex:1;background:rgba(241,234,224,.04);border:1px solid var(--line);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:15px;letter-spacing:.3em;text-align:center;padding:15px 16px;border-radius:3px;outline:none;transition:border-color .2s}
   .gate-form input:focus{border-color:var(--red)}
-  .gate-form button{background:var(--red);color:var(--ink);border:none;cursor:pointer;
-    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
-    padding:0 24px;border-radius:3px;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 30px -10px rgba(216,65,47,.7)}
+  .gate-form button{background:var(--red);color:var(--ink);border:none;cursor:pointer;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:0 24px;border-radius:3px;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 30px -10px rgba(216,65,47,.7)}
   .gate-form button:hover{transform:translateY(-2px)}
   .gate-err{color:var(--red);font-size:11px;letter-spacing:.1em;text-transform:uppercase;height:14px;margin-top:16px;opacity:0;transition:opacity .2s}
   .gate-err.show{opacity:1}
@@ -190,6 +107,7 @@
     .hero{padding:54px 0 40px}
     .actionbar{flex-direction:column;align-items:stretch}
     .download{justify-content:center}
+    .product-band .pmeta{margin-left:0}
   }
 </style>
 </head>
@@ -200,7 +118,7 @@
       <div class="dot"></div>
       <div class="gk">Orbis / LVS 2026</div>
       <h2>Protected</h2>
-      <p>Enter the access password to view this capture.</p>
+      <p>Enter the access password to view these captures.</p>
       <form class="gate-form" id="gateForm" autocomplete="off">
         <input id="gatePass" type="password" placeholder="••••" aria-label="Password" autofocus />
         <button type="submit">Enter</button>
@@ -213,85 +131,150 @@
 
     <header data-rise style="animation-delay:.05s">
       <div class="brand"><span class="dot"></span>ORBIS&nbsp;/&nbsp;LVS&nbsp;2026</div>
-      <div class="meta">Product Capture · 3PH-INV</div>
+      <div class="meta">Product Capture Series</div>
     </header>
 
     <section class="hero">
       <div class="kicker" data-rise style="animation-delay:.1s">Industrial Power Systems</div>
-      <h1 data-rise style="animation-delay:.18s">3-Phase<br>Inverter <em>Cabinet</em></h1>
+      <h1 data-rise style="animation-delay:.18s">Product<em>Captures</em></h1>
       <p class="lede" data-rise style="animation-delay:.3s">
-        From the floor to the studio. A single field unit, photographed on site,
-        rebuilt on a clean white sweep, then captured as a full 360° turntable —
-        colour-matched to the true deep red of the steel.
+        Two industrial enclosures, taken from source to studio — field reference and CAD geometry
+        rebuilt as photoreal renders, then captured as full 360° turntables, colour-matched to the
+        true deep red of the steel.
       </p>
     </section>
 
-    <!-- 01 — field -->
-    <section class="specimen">
-      <div class="idx" data-rise>01 /</div>
-      <div>
-        <div class="head" data-rise style="animation-delay:.05s">
-          <h2>On the floor</h2>
-          <p class="sub">The original unit as photographed in the warehouse — the reference for the true cabinet colour and proportions.</p>
-          <div class="tags"><span class="tag">Field photograph</span><span class="tag">Reference</span><span class="tag">As-built</span></div>
-        </div>
-        <div class="frame field" data-rise style="animation-delay:.12s">
-          <img src="3PH%20Inverter.jpg" alt="3-Phase inverter cabinet photographed in the warehouse" loading="lazy" />
-          <div class="caption"><b>Source / Field</b><span>3PH&nbsp;Inverter.jpg</span></div>
+    <!-- ============ PRODUCT 01 ============ -->
+    <section class="product">
+      <div class="product-band" data-rise>
+        <span class="pno">Product 01</span>
+        <h2>3-Phase Inverter</h2>
+        <span class="pmeta">Field unit · 3PH-INV</span>
+      </div>
+
+      <div class="specimen">
+        <div class="idx" data-rise>01 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>On the floor</h3>
+            <p class="sub">The original unit as photographed in the warehouse — the reference for the true cabinet colour and proportions.</p>
+            <div class="tags"><span class="tag">Field photograph</span><span class="tag">Reference</span></div>
+          </div>
+          <div class="frame field" data-rise style="animation-delay:.12s">
+            <img src="3PH%20Inverter.jpg" alt="3-Phase inverter cabinet photographed in the warehouse" loading="lazy" />
+            <div class="caption"><b>Source / Field</b><span>3PH&nbsp;Inverter.jpg</span></div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- 02 — render -->
-    <section class="specimen">
-      <div class="idx" data-rise>02 /</div>
-      <div>
-        <div class="head" data-rise style="animation-delay:.05s">
-          <h2>Rendered on white</h2>
-          <p class="sub">Studio render on a seamless white sweep, colour-corrected to the real cabinet's deep red (hue&nbsp;2 · RGB&nbsp;218·69·57).</p>
-          <div class="tags"><span class="tag">Studio render</span><span class="tag">White sweep</span><span class="tag">Colour-matched</span></div>
+      <div class="specimen">
+        <div class="idx" data-rise>02 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>Rendered on white</h3>
+            <p class="sub">Studio render on a seamless white sweep, colour-corrected to the real cabinet's deep red.</p>
+            <div class="tags"><span class="tag">Studio render</span><span class="tag">White sweep</span><span class="tag">Colour-matched</span></div>
+          </div>
+          <div class="frame" data-rise style="animation-delay:.12s">
+            <img src="generated_imgs/cabinet_deepred_corrected.png" alt="Studio render of the inverter on white, deep red" loading="lazy" />
+            <div class="caption"><b>Render / White</b><span class="swatch"><i></i>DEEP RED</span></div>
+          </div>
         </div>
-        <div class="frame" data-rise style="animation-delay:.12s">
-          <img src="generated_imgs/cabinet_deepred_corrected.png" alt="Studio render of the cabinet on white, corrected to deep red" loading="lazy" />
-          <div class="caption">
-            <b>Render / White</b>
-            <span class="swatch"><i></i>#D8412F · DEEP RED</span>
+      </div>
+
+      <div class="specimen">
+        <div class="idx" data-rise>03 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>360° rotation</h3>
+            <p class="sub">A continuous, rigid turntable spin — looping below. Download the full-resolution master with the button.</p>
+            <div class="tags"><span class="tag">1920 × 1080</span><span class="tag">24 fps · 8s</span><span class="tag">Looping</span></div>
+          </div>
+          <div class="frame" data-rise style="animation-delay:.12s">
+            <div class="video-stage">
+              <div class="spin-badge"><span class="live"></span>360° · Live loop</div>
+              <video class="spin" src="cabinet_spin_360_v3_deepred.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="caption"><b>Video / Turntable</b><span>cabinet_spin_360_v3_deepred.mp4</span></div>
+          </div>
+          <div class="actionbar" data-rise style="animation-delay:.2s">
+            <div class="filemeta">Master · <b>MP4 / H.264</b> · 1080p</div>
+            <a class="download" href="cabinet_spin_360_v3_deepred.mp4" download="3phase_inverter_spin_360.mp4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+              <span>Download video</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 03 — video -->
-    <section class="specimen">
-      <div class="idx" data-rise>03 /</div>
-      <div>
-        <div class="head" data-rise style="animation-delay:.05s">
-          <h2>360° rotation</h2>
-          <p class="sub">A continuous, rigid turntable spin of the cabinet — looping below. Download the full-resolution master with the button.</p>
-          <div class="tags"><span class="tag">1920 × 1080</span><span class="tag">24 fps · 8s</span><span class="tag">Looping</span><span class="tag">BT.709</span></div>
-        </div>
+    <!-- ============ PRODUCT 02 ============ -->
+    <section class="product">
+      <div class="product-band" data-rise>
+        <span class="pno">Product 02</span>
+        <h2>IH Intake Cabinet</h2>
+        <span class="pmeta">From CAD · small&nbsp;IH</span>
+      </div>
 
-        <div class="frame" data-rise style="animation-delay:.12s">
-          <div class="video-stage">
-            <div class="spin-badge"><span class="live"></span>360° · Live loop</div>
-            <video id="spin" src="cabinet_spin_360_v3_deepred.mp4" autoplay loop muted playsinline></video>
+      <div class="specimen">
+        <div class="idx" data-rise>01 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>From CAD</h3>
+            <p class="sub">The source DXF engineering drawing — an isometric line view of the tall intake-hood enclosure.</p>
+            <div class="tags"><span class="tag">DXF drawing</span><span class="tag">Isometric</span><span class="tag">As-designed</span></div>
           </div>
-          <div class="caption"><b>Video / Turntable</b><span>cabinet_spin_360_v3_deepred.mp4</span></div>
+          <div class="frame tall" data-rise style="animation-delay:.12s">
+            <img src="generated_imgs/ih_cad.png" alt="Isometric CAD line drawing of the IH intake cabinet" loading="lazy" />
+            <div class="caption"><b>Source / CAD</b><span>small IH, individual.dxf</span></div>
+          </div>
         </div>
+      </div>
 
-        <div class="actionbar" data-rise style="animation-delay:.2s">
-          <div class="filemeta">Master file · <b>MP4 / H.264</b> · 1080p · ~4&nbsp;MB</div>
-          <a class="download" href="cabinet_spin_360_v3_deepred.mp4" download="cabinet_spin_360_deepred.mp4">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-            <span>Download video</span>
-          </a>
+      <div class="specimen">
+        <div class="idx" data-rise>02 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>Rendered on white</h3>
+            <p class="sub">The CAD geometry rebuilt as a photoreal studio render in the matching deep red, preserving every panel, louver and hinge.</p>
+            <div class="tags"><span class="tag">Studio render</span><span class="tag">White sweep</span><span class="tag">Colour-matched</span></div>
+          </div>
+          <div class="frame tall" data-rise style="animation-delay:.12s">
+            <img src="generated_imgs/ih_render.png" alt="Photoreal render of the IH cabinet on white, deep red" loading="lazy" />
+            <div class="caption"><b>Render / White</b><span class="swatch"><i></i>DEEP RED</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="idx" data-rise>03 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>360° rotation</h3>
+            <p class="sub">A continuous, rigid turntable spin of the tower — looping below. Download the full-resolution master with the button.</p>
+            <div class="tags"><span class="tag">1920 × 1080</span><span class="tag">24 fps · 8s</span><span class="tag">Looping</span></div>
+          </div>
+          <div class="frame" data-rise style="animation-delay:.12s">
+            <div class="video-stage">
+              <div class="spin-badge"><span class="live"></span>360° · Live loop</div>
+              <video class="spin" src="ih_spin_360_deepred.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="caption"><b>Video / Turntable</b><span>ih_spin_360_deepred.mp4</span></div>
+          </div>
+          <div class="actionbar" data-rise style="animation-delay:.2s">
+            <div class="filemeta">Master · <b>MP4 / H.264</b> · 1080p</div>
+            <a class="download" href="ih_spin_360_deepred.mp4" download="ih_intake_cabinet_spin_360.mp4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+              <span>Download video</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
     <footer data-rise>
       <div>© 2026 Orbis Design · <span class="red">LVS 2026</span></div>
-      <div>3-Phase Inverter · Studio Capture</div>
+      <div>Product Capture Series · 2 units</div>
     </footer>
 
   </div>
@@ -299,27 +282,21 @@
   <script>
   (function(){
     var PW="lvs";
-    var gate=document.getElementById('gate'),
-        form=document.getElementById('gateForm'),
-        inp=document.getElementById('gatePass'),
-        err=document.getElementById('gateErr'),
+    var gate=document.getElementById('gate'),form=document.getElementById('gateForm'),
+        inp=document.getElementById('gatePass'),err=document.getElementById('gateErr'),
         card=gate.querySelector('.gate-card');
     function unlock(instant){
       if(instant) gate.style.transition='none';
       document.body.classList.remove('locked');
       gate.classList.add('unlocked');
       try{sessionStorage.setItem('lvs_ok','1');}catch(e){}
-      var v=document.getElementById('spin'); if(v){try{v.play();}catch(e){}}
+      document.querySelectorAll('video.spin').forEach(function(v){try{v.play();}catch(e){}});
     }
     try{ if(sessionStorage.getItem('lvs_ok')==='1'){ unlock(true); } }catch(e){}
     form.addEventListener('submit',function(e){
       e.preventDefault();
       if(inp.value.trim().toLowerCase()===PW){ unlock(false); }
-      else{
-        err.classList.add('show');
-        card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
-        inp.select();
-      }
+      else{ err.classList.add('show'); card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); inp.select(); }
     });
   })();
   </script>
