@@ -109,6 +109,34 @@
     .download{justify-content:center}
     .product-band .pmeta{margin-left:0}
   }
+
+  /* process log */
+  .log{padding-top:18px}
+  .log .product-band{align-items:flex-end}
+  .log .intro{color:var(--steel);font-size:13px;line-height:1.85;max-width:62ch;margin:26px 0 46px}
+  .entry{display:grid;grid-template-columns:128px 1fr;gap:0 30px;padding:28px 0;border-top:1px solid var(--line)}
+  .entry .rev{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--red);font-size:14px;letter-spacing:.08em;padding-top:3px}
+  .entry .rev small{display:block;color:var(--steel);font-weight:400;font-size:10.5px;letter-spacing:.1em;margin-top:7px}
+  .entry h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.18rem;margin-bottom:13px;letter-spacing:-.005em}
+  .entry ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+  .entry li{color:var(--paper);font-size:12.5px;line-height:1.6;padding-left:18px;position:relative;opacity:.9}
+  .entry li::before{content:"\203A";position:absolute;left:0;color:var(--red);font-weight:700}
+  .entry li code{background:rgba(216,65,47,.12);color:#f0a89e;padding:1px 6px;border-radius:3px;font-size:11.5px}
+  .entry .tools{display:flex;flex-wrap:wrap;gap:7px}
+  .entry .tool{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);border:1px solid var(--line);padding:4px 9px;border-radius:2px}
+  .stack{margin:42px 0 0;padding:32px;background:rgba(241,234,224,.03);border:1px solid var(--line);border-radius:4px}
+  .stack .sh{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+  .stack dl{display:grid;grid-template-columns:200px 1fr;gap:14px 26px;margin:0}
+  .stack dt{color:var(--paper);font-size:12px;font-weight:600}
+  .stack dd{color:var(--steel);font-size:12px;line-height:1.6;margin:0}
+  .stack .note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--steel);font-size:11.5px;line-height:1.7}
+  .stack .note b{color:var(--paper)}
+  @media(max-width:720px){
+    .entry{grid-template-columns:1fr;gap:10px}
+    .stack{padding:22px}
+    .stack dl{grid-template-columns:1fr;gap:3px 0}
+    .stack dd{margin-bottom:12px}
+  }
 </style>
 </head>
 <body class="locked">
@@ -269,6 +297,121 @@
             </a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS LOG ============ -->
+    <section class="log product">
+      <div class="product-band" data-rise>
+        <span class="pno">Appendix</span>
+        <h2>Process Log</h2>
+        <span class="pmeta">Build record · May 2026</span>
+      </div>
+
+      <p class="intro" data-rise>
+        A full record of how these captures were produced — the diagnostics, colour corrections,
+        regenerations, and tooling behind both product spins, in the order they happened.
+      </p>
+
+      <div class="entry" data-rise>
+        <div class="rev">R01<small>2026-05-28</small></div>
+        <div>
+          <h4>Colour metadata fix</h4>
+          <ul>
+            <li>The original 360° video looked orange in players, yet measured as deep red in analysis.</li>
+            <li>Diagnosed the cause: the file carried <em>no</em> colour metadata (no <code>colr</code> atom). The untagged 720p H.264 was encoded with the BT.601 matrix, but players assumed BT.709 — shifting the reds toward orange.</li>
+            <li>Stamped explicit BT.601 (<code>smpte170m</code>) tags via a lossless stream-copy — no re-encode, no quality loss.</li>
+          </ul>
+          <div class="tools"><span class="tool">ffmpeg</span><span class="tool">h264_metadata bsf</span><span class="tool">OpenCV</span><span class="tool">Python</span></div>
+        </div>
+      </div>
+
+      <div class="entry" data-rise>
+        <div class="rev">R02<small>2026-05-28</small></div>
+        <div>
+          <h4>Deep-red colour grade</h4>
+          <ul>
+            <li>Compared the render to the real cabinet: its green channel was too high (hue 5–8 vs the real hue 2), reading orange.</li>
+            <li>Built an HSV grade — hue shift, saturation and value adjustment, plus highlight green-reduction — and colour-corrected the studio still and video toward the true deep red.</li>
+          </ul>
+          <div class="tools"><span class="tool">OpenCV + NumPy</span><span class="tool">HSV grading</span></div>
+        </div>
+      </div>
+
+      <div class="entry" data-rise>
+        <div class="rev">R03<small>2026-05-28</small></div>
+        <div>
+          <h4>Regenerate spin — panel-pop artifact</h4>
+          <ul>
+            <li>A panel "popped in" on the side mid-rotation — a generative artifact of the original video, not fixable by colour grading.</li>
+            <li>Produced a corrected deep-red still, uploaded it to the fal CDN, and regenerated a clean, rigid 360° turntable from it.</li>
+          </ul>
+          <div class="tools"><span class="tool">Veo 3.1 (fal.ai)</span><span class="tool">fal REST API / CDN</span><span class="tool">.env key</span></div>
+        </div>
+      </div>
+
+      <div class="entry" data-rise>
+        <div class="rev">R04<small>2026-05-28</small></div>
+        <div>
+          <h4>Deepen red &amp; correct depth</h4>
+          <ul>
+            <li>The new spin still read too orange under bright studio light (a perceptual effect), and the shallow ~1.5&nbsp;ft cabinet looked like a deep box — Veo had over-extruded its depth.</li>
+            <li>Deepened the red to a darker, richer crimson, and regenerated with a prompt enforcing a thin, shallow, wide-flat profile. Re-tagged BT.709.</li>
+          </ul>
+          <div class="tools"><span class="tool">Veo 3.1</span><span class="tool">OpenCV grade</span><span class="tool">ffmpeg (BT.709)</span></div>
+        </div>
+      </div>
+
+      <div class="entry" data-rise>
+        <div class="rev">R05<small>2026-05-28</small></div>
+        <div>
+          <h4>Showcase page</h4>
+          <ul>
+            <li>Built an industrial-editorial showcase: field photo → studio render → looping 360° spin, with a full-resolution download button.</li>
+          </ul>
+          <div class="tools"><span class="tool">HTML / CSS / JS</span><span class="tool">Bricolage Grotesque</span><span class="tool">IBM Plex Mono</span></div>
+        </div>
+      </div>
+
+      <div class="entry" data-rise>
+        <div class="rev">R06<small>2026-05-28</small></div>
+        <div>
+          <h4>Publish</h4>
+          <ul>
+            <li>Deleted superseded intermediate files; added a client-side password gate (<code>lvs</code>).</li>
+            <li>Initialised git with <code>.env</code> git-ignored, pushed to GitHub, enabled GitHub Pages via the CLI, and renamed to <code>index.html</code> for a clean root URL.</li>
+          </ul>
+          <div class="tools"><span class="tool">git</span><span class="tool">GitHub CLI (gh)</span><span class="tool">GitHub Pages</span></div>
+        </div>
+      </div>
+
+      <div class="entry" data-rise>
+        <div class="rev">R07<small>2026-05-28</small></div>
+        <div>
+          <h4>Second product from CAD</h4>
+          <ul>
+            <li>Parsed <code>small IH, individual.dxf</code> — a 2D isometric line drawing (~6,200 lines, arcs, polylines and splines) — and rendered the line art.</li>
+            <li>Rebuilt it as a photoreal deep-red studio render, generated a matching rigid 360° spin, and applied the same deepen-red grade + BT.709 tag.</li>
+            <li>Expanded the page into a two-product capture series.</li>
+          </ul>
+          <div class="tools"><span class="tool">ezdxf</span><span class="tool">matplotlib</span><span class="tool">Nano Banana Pro (Gemini 3 Pro Image)</span><span class="tool">Veo 3.1</span><span class="tool">ffmpeg</span></div>
+        </div>
+      </div>
+
+      <div class="stack" data-rise>
+        <div class="sh">Tooling Stack</div>
+        <dl>
+          <dt>Video &amp; colour</dt><dd>ffmpeg (imageio-ffmpeg build) — BT.601/709 colour tagging and re-encoding</dd>
+          <dt>Analysis &amp; grading</dt><dd>OpenCV + NumPy (Python) — frame sampling, colour measurement, HSV deep-red grade</dd>
+          <dt>CAD</dt><dd>ezdxf + matplotlib — DXF parsing and line-art rendering</dd>
+          <dt>Image generation</dt><dd>Nano Banana Pro / Gemini 3 Pro Image — line-art → photoreal product render</dd>
+          <dt>Video generation</dt><dd>Veo 3.1 (fal.ai) — image-to-video 360° turntables, 1080p</dd>
+          <dt>Delivery</dt><dd>git · GitHub Pages · vanilla HTML / CSS / JS</dd>
+        </dl>
+        <p class="note">
+          <b>Colour reference:</b> the real inverter cabinet measures ≈ RGB&nbsp;218·69·57 (hue&nbsp;2); every render and spin was matched to it.
+          <b>Note:</b> the password gate is client-side only and deters casual viewing, not determined access.
+        </p>
       </div>
     </section>
 
