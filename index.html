@@ -137,6 +137,20 @@
     .stack dl{grid-template-columns:1fr;gap:3px 0}
     .stack dd{margin-bottom:12px}
   }
+
+  /* client note */
+  .clientnote{margin:30px 0 0;border-left:3px solid var(--red);background:rgba(241,234,224,.03);padding:30px 34px;border-radius:0 4px 4px 0}
+  .clientnote .sh{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+  .clientnote blockquote{margin:0}
+  .clientnote blockquote p{color:var(--paper);font-size:14.5px;line-height:1.9;max-width:64ch;margin-bottom:16px;font-style:italic}
+  .clientnote blockquote p:last-child{margin-bottom:0}
+  .clientnote .by{margin-top:22px;color:var(--steel);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  .clientnote .clarify{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+  .clientnote .clarify .sh{color:var(--steel)}
+  .clientnote .clarify ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0}
+  .clientnote .clarify li{color:var(--paper);font-size:12.5px;line-height:1.65;padding-left:18px;position:relative;opacity:.9}
+  .clientnote .clarify li::before{content:"\203A";position:absolute;left:0;color:var(--red);font-weight:700}
+  .clientnote .clarify b{color:#f0a89e;font-weight:600}
 </style>
 </head>
 <body class="locked">
@@ -412,6 +426,26 @@
           <b>Colour reference:</b> the real inverter cabinet measures ≈ RGB&nbsp;218·69·57 (hue&nbsp;2); every render and spin was matched to it.
           <b>Note:</b> the password gate is client-side only and deters casual viewing, not determined access.
         </p>
+      </div>
+
+      <div class="clientnote" data-rise>
+        <div class="sh">Client Note — Next Steps</div>
+        <blockquote>
+          <p>"I created a render from the picture and then one from the cad file.</p>
+          <p>The best would likely be taking a picture of a cabinet: front, side &amp; back and then we feed those in and I believe we can get that nearly perfect.</p>
+          <p>A CAD file with specified dimensions and all views might also work. Overall, we need more info to get a better render, but once that formula's set, these could be easy to generate."</p>
+        </blockquote>
+        <div class="by">— Sent to client · May 2026</div>
+
+        <div class="clarify">
+          <div class="sh">Technical clarification</div>
+          <ul>
+            <li><b>Best input — a native 3D CAD model</b> (STEP / 3D solid): exact geometry and dimensions, so the turntable is dimensionally correct with no guesswork. The file used here was a <b>2D isometric drawing</b> (a single view), which is why depth had to be estimated and corrected.</li>
+            <li><b>Multi-view photos (front / side / back)</b> are the strong photo-based alternative — but they feed a <b>3D-reconstruction or multi-reference pipeline</b>, not the single-image video model used for these first spins, which infers the unseen sides.</li>
+            <li>Expect <b>highly accurate</b> rather than literally perfect: geometry can be matched closely; fine surface and label detail may still vary.</li>
+            <li>Once the input formula (3D model or calibrated multi-view set) is fixed, repeat generations are fast and consistent.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
