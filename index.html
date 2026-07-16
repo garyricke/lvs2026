@@ -180,9 +180,9 @@
       <div class="kicker" data-rise style="animation-delay:.1s">Industrial Power Systems</div>
       <h1 data-rise style="animation-delay:.18s">Product<em>Captures</em></h1>
       <p class="lede" data-rise style="animation-delay:.3s">
-        Two industrial enclosures, taken from source to studio — field reference and CAD geometry
-        rebuilt as photoreal renders, then captured as full 360° turntables, colour-matched to the
-        true deep red of the steel.
+        Two industrial enclosures taken from source to studio — field reference and CAD geometry
+        rebuilt as photoreal renders, then captured as full 360° turntables — plus a third spun as a
+        true 3D turntable straight from the CAD, all colour-matched to the true deep red of the steel.
       </p>
     </section>
 
@@ -314,6 +314,66 @@
       </div>
     </section>
 
+    <!-- ============ PRODUCT 03 · TRUE 3D FROM CAD ============ -->
+    <section class="product" id="ih3d">
+      <div class="product-band" data-rise>
+        <span class="pno">Product 03 · New method</span>
+        <h2>IH Series — True 3D Turntable</h2>
+        <span class="pmeta">Direct from STEP · Medium</span>
+      </div>
+
+      <div class="specimen">
+        <div class="idx" data-rise>01 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>Straight from the 3D model</h3>
+            <p class="sub">This one skips the AI step entirely. We load the client's actual <b>STEP</b> solid model, render it in the deep-red finish, and orbit a real camera around it — so every panel, louver and proportion is exact, never inferred. Shown here on the <b>Medium</b> enclosure.</p>
+            <div class="tags"><span class="tag">STEP · 3D CAD</span><span class="tag">Geometrically exact</span><span class="tag">No AI morphing</span></div>
+          </div>
+          <div class="frame tall" data-rise style="animation-delay:.12s">
+            <img src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/lvs2026/ih_medium_poster.png" alt="Deep-red studio render of the IH Series Medium cabinet, generated directly from the 3D STEP model" loading="lazy" />
+            <div class="caption"><b>Render / CAD-native</b><span class="swatch"><i></i>DEEP RED</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="idx" data-rise>02 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>360° rotation</h3>
+            <p class="sub">A continuous, perfectly rigid turntable — because it's a genuine 3D orbit there's zero warping or invented detail as it spins, and it's grounded with a soft contact shadow. Looping below; full-resolution master via the button.</p>
+            <div class="tags"><span class="tag">1920 × 1080</span><span class="tag">24 fps · 8s</span><span class="tag">Cloudinary</span></div>
+          </div>
+          <div class="frame" data-rise style="animation-delay:.12s">
+            <div class="video-stage">
+              <div class="spin-badge"><span class="live"></span>360° · Live loop</div>
+              <video class="spin" src="https://res.cloudinary.com/dsbllwpbh/video/upload/f_auto,q_auto/lvs2026/ih_medium_spin_360_deepred.mp4" poster="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1400/lvs2026/ih_medium_poster.png" autoplay loop muted playsinline></video>
+            </div>
+            <div class="caption"><b>Video / Turntable</b><span>ih_medium_spin_360_deepred.mp4</span></div>
+          </div>
+          <div class="actionbar" data-rise style="animation-delay:.2s">
+            <div class="filemeta">Master · <b>MP4 / H.264</b> · 1080p · Cloudinary</div>
+            <a class="download" href="https://res.cloudinary.com/dsbllwpbh/video/upload/v1784209753/lvs2026/ih_medium_spin_360_deepred.mp4" download="ih_series_medium_spin_360.mp4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+              <span>Download video</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="idx" data-rise>03 /</div>
+        <div>
+          <div class="head" data-rise style="animation-delay:.05s">
+            <h3>How this differs</h3>
+            <p class="sub">Products 01–02 start from a single 2D image and use generative AI (Veo) to imagine the rotation — fast and photoreal, but the AI guesses hidden faces and can subtly morph the geometry. This new method renders directly from the supplied 3D CAD: <b>dimensionally accurate, repeatable across the whole product line, and free of AI artefacts</b>. The trade-off is a cleaner, more technical finish rather than a fully photographic one. The same STEP files scale to Small, Medium and Large.</p>
+            <div class="tags"><span class="tag">CAD-native</span><span class="tag">Line-wide consistent</span><span class="tag">For review</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ PROCESS LOG ============ -->
     <section class="log product">
       <div class="product-band" data-rise>
@@ -412,6 +472,19 @@
         </div>
       </div>
 
+      <div class="entry" data-rise>
+        <div class="rev">R08<small>2026-07-16</small></div>
+        <div>
+          <h4>Third product — true 3D from STEP</h4>
+          <ul>
+            <li>Received the client's native <code>STEP</code> solids for the IH Series (Small / Medium / Large) and loaded the SolidWorks AP203 assemblies directly — no 2D estimation.</li>
+            <li>Tessellated the geometry and rendered a real camera orbit: a dimensionally-exact 360° turntable with no AI step and no morphing, then applied the same deepen-red grade + BT.709 tag and a soft contact shadow.</li>
+            <li>Added the Medium enclosure as the third product for review; hosted its master + poster on Cloudinary.</li>
+          </ul>
+          <div class="tools"><span class="tool">cadquery / OpenCASCADE</span><span class="tool">VTK</span><span class="tool">OpenCV + NumPy</span><span class="tool">ffmpeg</span><span class="tool">Cloudinary</span></div>
+        </div>
+      </div>
+
       <div class="stack" data-rise>
         <div class="sh">Tooling Stack</div>
         <dl>
@@ -420,7 +493,8 @@
           <dt>CAD</dt><dd>ezdxf + matplotlib — DXF parsing and line-art rendering</dd>
           <dt>Image generation</dt><dd>Nano Banana Pro / Gemini 3 Pro Image — line-art → photoreal product render</dd>
           <dt>Video generation</dt><dd>Veo 3.1 (fal.ai) — image-to-video 360° turntables, 1080p</dd>
-          <dt>Delivery</dt><dd>git · GitHub Pages · vanilla HTML / CSS / JS</dd>
+          <dt>3D CAD render</dt><dd>cadquery / OpenCASCADE + VTK — STEP tessellation and geometry-accurate turntable rendering (no AI)</dd>
+          <dt>Delivery</dt><dd>git · GitHub Pages · Cloudinary media · vanilla HTML / CSS / JS</dd>
         </dl>
         <p class="note">
           <b>Colour reference:</b> the real inverter cabinet measures ≈ RGB&nbsp;218·69·57 (hue&nbsp;2); every render and spin was matched to it.
@@ -451,7 +525,7 @@
 
     <footer data-rise>
       <div>© 2026 Orbis Design · <span class="red">LVS 2026</span></div>
-      <div>Product Capture Series · 2 units</div>
+      <div>Product Capture Series · 3 units</div>
     </footer>
 
   </div>

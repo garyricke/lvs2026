@@ -4,3 +4,7 @@
 
 # OS junk
 .DS_Store
+
+# Large CAD source (keep out of git — bulky binaries; PDFs are kept)
+*.STEP
+*.step
