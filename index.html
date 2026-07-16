@@ -337,12 +337,12 @@
         </div>
       </div>
 
-      <div class="specimen">
+      <div class="specimen" id="turntable" style="scroll-margin-top:24px">
         <div class="idx" data-rise>02 /</div>
         <div>
           <div class="head" data-rise style="animation-delay:.05s">
             <h3>360° rotation</h3>
-            <p class="sub">A continuous, perfectly rigid turntable — because it's a genuine 3D orbit there's zero warping or invented detail as it spins, and it's grounded with a soft contact shadow. Looping below; full-resolution master via the button.</p>
+            <p class="sub">A continuous, perfectly rigid turntable — a genuine 3D orbit, so there's zero warping or invented detail as it spins. Looping below; full-resolution master via the button.</p>
             <div class="tags"><span class="tag">1920 × 1080</span><span class="tag">24 fps · 8s</span><span class="tag">Cloudinary</span></div>
           </div>
           <div class="frame" data-rise style="animation-delay:.12s">
@@ -358,6 +358,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
               <span>Download video</span>
             </a>
+          </div>
+          <div data-rise style="animation-delay:.26s;margin-top:18px;padding:13px 17px;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:4px;background:rgba(216,65,47,.05);color:var(--steel);font-size:12px;letter-spacing:.03em;line-height:1.55">
+            <b style="color:var(--paper)">Work in progress —</b> this is an early render for review. We're still refining the <b>ground shadow</b> and the <b>vent / grate detail</b>; the geometry, proportions and colour are final.
           </div>
         </div>
       </div>
@@ -536,12 +539,26 @@
     var gate=document.getElementById('gate'),form=document.getElementById('gateForm'),
         inp=document.getElementById('gatePass'),err=document.getElementById('gateErr'),
         card=gate.querySelector('.gate-card');
+    function scrollToHash(){
+      if(location.hash.length<2) return;
+      var el;
+      try{ el=document.querySelector(location.hash); }catch(e){ return; }
+      if(!el) return;
+      // scrollIntoView mis-targets this layout (body overflow-x:hidden), so scroll the window directly.
+      // media loads late and shifts layout — re-settle over a few passes.
+      function go(){
+        var y=el.getBoundingClientRect().top + (window.scrollY||document.documentElement.scrollTop||0) - 20;
+        window.scrollTo({top:y,behavior:'instant'});
+      }
+      [260,1000,1800].forEach(function(t){ setTimeout(go,t); });
+    }
     function unlock(instant){
       if(instant) gate.style.transition='none';
       document.body.classList.remove('locked');
       gate.classList.add('unlocked');
       try{sessionStorage.setItem('lvs_ok','1');}catch(e){}
       document.querySelectorAll('video.spin').forEach(function(v){try{v.play();}catch(e){}});
+      scrollToHash();
     }
     try{ if(sessionStorage.getItem('lvs_ok')==='1'){ unlock(true); } }catch(e){}
     form.addEventListener('submit',function(e){
